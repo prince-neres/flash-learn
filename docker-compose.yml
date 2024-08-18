@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: flashlearn-postgres
+    environment:
+      POSTGRES_DB: flashlearn
+      POSTGRES_USER: flashlearn
+      POSTGRES_PASSWORD: flashlearn
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - flashlearn-network
+
+volumes:
+  postgres_data:
+
+networks:
+  flashlearn-network:
+    driver: bridge
